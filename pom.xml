@@ -95,64 +95,16 @@
         </executions>
       </plugin>
       <plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.7</version>
-        <executions>
-          <execution>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-              <target>
-                <move file="static/em.min.js" tofile="js/em.min.js" />
-                <move file="static/em.min.css" tofile="css/em.min.css" />
-                <move file="static/lib" tofile="lib" />
-                <move file="static/partials" tofile="partials" />
-                <delete dir="static" />
-              </target>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-clean-plugin</artifactId>
         <version>2.5</version>
         <configuration>
           <filesets>
             <fileset>
-              <directory>${basedir}/js</directory>
-            </fileset>
-            <fileset>
-              <directory>${basedir}/css</directory>
-            </fileset>
-            <fileset>
-              <directory>${basedir}/lib</directory>
-            </fileset>
-            <fileset>
-              <directory>${basedir}/partials</directory>
+              <directory>${basedir}/static</directory>
             </fileset>
           </filesets>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-scm-plugin</artifactId>
-        <version>1.8.1</version>
-        <executions>
-          <execution>
-            <id>push-to-github</id>
-            <phase>package</phase>
-            <goals>
-              <goal>checkin</goal>
-            </goals>
-            <configuration>
-              <pushChanges>true</pushChanges>
-              <message>Automatic Maven commit</message>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
     <pluginManagement>

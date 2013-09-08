@@ -154,29 +154,6 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>com.github.chrisprice</groupId>
-        <artifactId>phonegap-build-maven-plugin</artifactId>
-        <version>0.0.4</version>
-        <executions>
-          <execution>
-            <id>start-phonegap-build</id>
-            <phase>package</phase>
-            <goals>
-              <goal>clean</goal>
-              <goal>build</goal>
-            </goals>
-            <configuration>
-              <configFile>${basedir}/config.xml</configFile>
-              <platforms>
-                <platform>ios</platform>
-                <platform>android</platform>
-                <platform>winphone</platform>
-              </platforms>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
     <pluginManagement>
       <plugins>

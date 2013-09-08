@@ -1,5 +1,6 @@
 js/
 css/
 partials/
-lib/
+lib/*
+!lib/cordova.js
 target/

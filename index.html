@@ -26,10 +26,11 @@
     <title>Angular PhoneGap Seed</title>
 </head>
 <body>
-    <a href="#/">Main View</a>
-    <a href="#/view">New View</a>
-
-    <div ng-view></div>
+    <div class="container">
+      <div class="row-fluid">
+        <div class="col-lg-6 col-lg-offset-3 em-page" ng-view></div>
+      </div>
+    </div>
 
     <!-- Libs -->
     <script type="text/javascript" src="lib/cordova.js"></script>
@@ -38,8 +39,5 @@
     <script src="/static/lib/angularjs/angular.min.js"></script>
     <script src="/static/lib/base64.js"></script>
     <script src="/static/em.min.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
 </body>
 </html>

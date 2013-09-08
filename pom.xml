@@ -1,0 +1,145 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+  <groupId>org.extendedmind</groupId>
+  <artifactId>phonegap</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Extended Mind</name>
+  <description>Extended Mind Phonegap</description>
+  <inceptionYear>2013</inceptionYear>
+  <url>https://github.com/extendedmind/extendedmind</url>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git@github.com:extendedmind/extendedmind.git</connection>
+    <developerConnection>scm:git:git@github.com:extendedmind/extendedmind.git</developerConnection>
+    <url>git@github.com:extendedmind/extendedmind.git</url>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>ttiurani</id>
+      <name>Timo Tiuraniemi</name>
+      <email>timo.tiuraniemi@iki.fi</email>
+    </developer>
+  </developers>
+
+  <properties>
+    <encoding>UTF-8</encoding>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>oss-sonatype-public</id>
+      <name>OSS Sonatype public</name>
+      <url>https://oss.sonatype.org/content/repositories/public</url>
+    </repository>
+    <repository>
+      <id>oss-sonatype-snapshots</id>
+      <name>OSS Sonatype Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </repository>
+  </repositories>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.extendedmind.frontend</groupId>
+        <artifactId>frontend-core</artifactId>
+        <version>${project.version}</version>
+        <type>war</type>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <sourceDirectory>${basedir}</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.extendedmind.frontend</groupId>
+                  <artifactId>frontend-core</artifactId>
+                  <type>war</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}</outputDirectory>
+                  <includes>static/**</includes>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+	  <plugin>
+		<artifactId>maven-antrun-plugin</artifactId>
+		<version>1.7</version>
+		<executions>
+		  <execution>
+			<phase>generate-resources</phase>
+			<goals>
+			  <goal>run</goal>
+			</goals>
+			<configuration>
+              <target>
+                <move file   = "static/em.min.js"
+                      tofile = "js/em.min.js" />
+                <move file   = "static/em.min.css"
+                      tofile = "css/em.min.css" />
+                <move file   = "static/lib"
+                      tofile = "lib" />
+                <move file   = "static/partials"
+                      tofile = "partials" />
+                <delete dir = "static"/>
+              </target>
+			</configuration>
+		  </execution>
+		</executions>
+	  </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>${basedir}/js</directory>
+            </fileset>
+            <fileset>
+			  <directory>${basedir}/css</directory>
+            </fileset>
+            <fileset>
+              <directory>${basedir}/lib</directory>
+            </fileset>
+            <fileset>
+              <directory>${basedir}/partials</directory>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

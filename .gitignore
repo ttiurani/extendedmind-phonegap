@@ -1,6 +1,4 @@
-js/
-css/
-partials/
-lib/*
-!lib/cordova.js
 target/
+.settings/
+.project
+bin/

@@ -9,7 +9,7 @@
   <groupId>org.extendedmind</groupId>
   <artifactId>phonegap</artifactId>
   <version>0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
   <name>Extended Mind</name>
   <description>Extended Mind Phonegap</description>
   <inceptionYear>2013</inceptionYear>
@@ -86,7 +86,7 @@
                   <artifactId>frontend-core</artifactId>
                   <type>war</type>
                   <overWrite>true</overWrite>
-                  <outputDirectory>${basedir}</outputDirectory>
+                  <outputDirectory>${basedir}/www</outputDirectory>
                   <includes>static/**</includes>
                 </artifactItem>
               </artifactItems>
@@ -101,7 +101,7 @@
         <configuration>
           <filesets>
             <fileset>
-              <directory>${basedir}/static</directory>
+              <directory>${basedir}/www/static</directory>
             </fileset>
           </filesets>
         </configuration>

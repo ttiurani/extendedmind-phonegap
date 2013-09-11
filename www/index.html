@@ -17,29 +17,35 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<html ng-app="App">
+<html ng-app="em.app">
     <head>
         <meta charset="utf-8" />
+        <meta name="fragment" content="!" />
+
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <title ng-bind="page.getTitle()"></title>
+        <link rel="stylesheet" href="static/lib/bootstrap/bootstrap.min.css"/>
+        <link rel="stylesheet" href="static/em.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Angular PhoneGap Seed</title>
     </head>
     <body>
-        <a href="#/">Main View</a>
-        <a href="#/view">New View</a>
+        <div class="container">
+          <div class="row-fluid">
+            <div class="col-lg-6 col-lg-offset-3 em-page" ng-view></div>
+          </div>
+        </div>
 
-        <div ng-view></div>
-    
         <!-- Libs -->
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="lib/angular-1.1.5.js"></script>
-    
-        <!-- App -->
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/app.js"></script>
-        <script type="text/javascript" src="js/services.js"></script>
-        <script type="text/javascript" src="js/controllers.js"></script>
+        <script src="static/lib/jquery/jquery.js"></script>
+        <script src="static/lib/jquery/jquery.cookie.min.js"></script>
+        <script src="static/lib/angularjs/angular.min.js"></script>
+        <script src="static/lib/angularjs/angular-mobile.min.js"></script>
+        <script src="static/lib/base64.js"></script>
+        <script src="js/index.js"></script>
+        <script src="static/em.min.js"></script>
+
         <script type="text/javascript">
           app.initialize();
         </script>

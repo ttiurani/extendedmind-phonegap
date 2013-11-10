@@ -3,10 +3,8 @@ Extended Mind - Phonegap
 
 Extended Mind - PhoneGap builds
 
-Setup
------
-
-* Android
+Android
+-------
 
 Download android-sdk
 Add android-sdk-linux/tools and /platform-tools to PATH (Platform tools does not exist at this point but add it anyway).
@@ -35,3 +33,11 @@ Add Nexus 4 as "nexus4_17" using 4.2.2 and ARM.
 In Eclipse Import.. Existing Android ..
 Run Debug as.. Android Application
 Open Logcat from Window->Show View->Android->Logcat
+
+iOS
+---
+
+Install NodeJS with "brew install nodejs".
+Install Cordova with "sudo npm install -g cordova".
+Install Phonegap with "sudo npm install -g phonegap".
+Open this folder and run "mkdir platforms" followed by "cordova platform add ios".

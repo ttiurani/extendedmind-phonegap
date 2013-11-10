@@ -3,4 +3,4 @@ target/
 .project
 bin/
 platforms/
-
+.DS_Store

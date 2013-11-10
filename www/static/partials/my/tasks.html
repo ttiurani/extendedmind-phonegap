@@ -1,35 +1,45 @@
-<div class="{{pageAnimation}}">
-  <div ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
-    <div id="header">
+<div id="em-feature-header-tasks"class="row em-feature-header">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <ul class="nav navbar-nav nav-justified">
+      <li id="em-iconlink">
+        <a href="{{prefix}}"><span class="em-icon">t</span></a>
+      </li>
+      <li id="em-featurelink">
+        <a class="em-feature" href="{{prefix}}/today">home</a>
+      </li>
+      <li id="em-addnewbutton">
+        <button type="button" class="btn em-plus" ng-click="addNew()">+</button>
+      </li>
+    </ul>
+  </nav>
+</div>
 
-      <div class="inlineblock">
-        <h4><a href="my/tasks" class="em-subtitle">tasks</a></h4>
-      </div>
+<div class="row em-scrollable-bottom">
+  <h3>unsorted</h3>
+  <ul class="list-unstyled">
+    <li ng-class="selected" ng-repeat="task in tasks | tasksFilter:filterService.activeFilters.unsorted">
 
-      <div class="inlineblock">
-        <button type="button" class="addNew">
-          <a href="my/tasks/new/">+</a>
-        </button>
-      </div>
+      <div task></div>
 
-    </div>
+    </li>
+    <div sub-task></div>
+  </ul>
 
-    <div>
-      <h4>inbox</h4>
-      <div tasks-list tasksfilter="{{tasksListFilter}}"></div>
-    </div>
+  <div>
+    <h3>projects</h3>
+    <ul class="list-unstyled">
+      <li ng-class="selected" ng-repeat="task in tasks | tasksFilter:filterService.activeFilters.project">
 
-    <div>
-      <h4>projects</h4>
-      <div projects-list></div>
-    </div>
+        <div project></div>
 
-    <h4>areas</h4>
-
-    <div>
-      <h4>contexts</h4>
-      <div contexts-list></div>
-    </div>
-
+      </li>
+    </ul>
   </div>
+
+  <h3>areas</h3>
+
+  <div contexts-list>
+    <h3>contexts</h3>
+  </div>
+
 </div>

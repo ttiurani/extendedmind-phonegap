@@ -1,25 +1,17 @@
-<div class="{{pageAnimation}}">
-  <div ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
-    <div id="header">
+<div class="em-slide">
 
-      <div class="inlineblock">
-        <h4><a href="my" class="em-subtitle">notes</a></h4>
-      </div>
+  <button type="button" class="btn btn-default pull-right" ng-click="addNew()">
+    +
+  </button>
 
-      <div class="inlineblock">
-        <button type="button" class="addNew" ng-click="editNewNote()">
-          +
-        </button>
-      </div>
-    </div>
+  <h1 class="text-primary">notes</h1>
 
-    <div>
-      <h4>inbox</h4>
-      <div notesfilter="{{notesListFilter}}" notes-list></div>
-
-      <h4>projects</h4>
-
-      <h4>areas</h4>
-    </div>
+  <div notes-list notesfilter="{{notesListFilter}}">
+    <h2>unsorted</h2>
   </div>
+
+  <h2>projects</h2>
+
+  <h2>areas</h2>
+
 </div>

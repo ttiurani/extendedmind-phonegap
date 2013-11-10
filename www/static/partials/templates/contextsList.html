@@ -1,9 +1,13 @@
-<ul>
-  <li ng-repeat="context in tags" ng-animate="{enter: 'example-repeat-enter',
-  leave: 'example-repeat-leave',
-  move: 'example-repeat-move'}">
+<div>
 
-    <span ng-click="setActiveItem(context)"><a href="my/tasks/context/{{context.uuid}}">@{{context.title}}</a></span>
+  <div ng-transclude></div>
 
-  </li>
-</ul>
+  <ul>
+    <li ng-repeat="context in tags">
+
+      <span><a class="text-muted" href="{{prefix}}/tasks/context/{{context.uuid}}">@{{context.title}}</a></span>
+
+    </li>
+  </ul>
+
+</div>

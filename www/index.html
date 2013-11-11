@@ -21,33 +21,22 @@
     <head>
         <meta charset="utf-8" />
         <meta name="fragment" content="!" />
-
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <title ng-bind="page.getTitle()"></title>
-        <link rel="stylesheet" href="static/lib/bootstrap/bootstrap.min.css"/>
-        <link rel="stylesheet" href="static/em.min.css"/>
+        <link rel="stylesheet" href="static/css/em.css"/>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
     </head>
     <body>
-        <div class="container">
-          <div class="row-fluid">
-            <div class="col-lg-6 col-lg-offset-3 em-page" ng-view></div>
-          </div>
+        <div class="container em-page">
+            <div ng-view></div>
         </div>
-
-        <!-- Libs -->
-        <script type="text/javascript" src="cordova.js"></script>
-        <script src="static/lib/jquery/jquery.js"></script>
-        <script src="static/lib/jquery/jquery.cookie.min.js"></script>
-        <script src="static/lib/angularjs/angular.min.js"></script>
-        <script src="static/lib/angularjs/angular-mobile.min.js"></script>
-        <script src="static/lib/base64.js"></script>
-        <script src="js/index.js"></script>
+        
         <script src="static/em.min.js"></script>
-
-        <script type="text/javascript">
-          app.initialize();
+        <script type="application/javascript">
+          window.addEventListener('load', function() {
+            FastClick.attach(document.body);
+          }, false);
         </script>
     </body>
 </html>

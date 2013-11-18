@@ -25,7 +25,10 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <title ng-bind="page.getTitle()"></title>
         <link rel="stylesheet" href="static/css/em.css"/>
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script>
+          var urlPrefix = 'http://ci.ext.md:8080';
+          var html5Mode = false;
+        </script>
     </head>
     <body>
         <div class="container em-page">

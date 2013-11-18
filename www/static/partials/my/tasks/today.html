@@ -3,16 +3,16 @@
 
     <ul class="nav navbar-nav nav-justified">
       <li id="em-iconlink">
-        <a href="{{prefix}}"><span class="em-icon">t</span></a>
+        <a href="" ng-click="gotoHome()"><span class="em-icon">t</span></a>
       </li>
       <li id="em-featurelink">
-        <a class="em-feature" href="{{prefix}}/projects">today</a>
+        <a class="em-feature" href="" ng-click="prevSlide()">date</a>
       </li>
       <li id="em-addnewbutton">
         <button type="button" class="btn em-plus" ng-click="addNew()">+</button>
       </li>
     </ul>
-    
+
   </nav>
 </div>
 
@@ -31,17 +31,4 @@
 
 </div>
 
-<div class="row em-date-footer">
-  <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-
-    <div class="datebar">
-      <table>
-        <tbody>
-          <tr>
-            <td ng-repeat="date in dates"><a class="text-muted" href="" ng-click="dateClicked(date)">{{date.displayDateShort}}</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+<div class="row em-date-footer" datebar></div>

@@ -7,8 +7,15 @@
     <author email="timo.tiuraniemi@iki.fi" href="http://www.extendedmind.org">
         Extended Mind Team
     </author>
+    <!-- If you do not want any permissions to be added to your app, add the
+    following tag to your config.xml; you will still have the INTERNET
+    permission on your app, which PhoneGap requires. -->
+    <preference name="permissions" value="none"/>
+    <!-- see https://build.phonegap.com/docs/config-xml for more permission values -->
+    <feature name="http://api.phonegap.com/1.0/file"/>
+    <feature name="http://api.phonegap.com/1.0/notification"/>
     <feature name="http://api.phonegap.com/1.0/device" />
-    <preference name="permissions" value="none" />
+    
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />

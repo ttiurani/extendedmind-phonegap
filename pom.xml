@@ -92,7 +92,7 @@
                   <overWrite>true</overWrite>
                   <outputDirectory>${basedir}/src/main/webapp</outputDirectory>
                   <includes>static/**</includes>
-                  <includes>WEB-INF/**</includes>
+                  <includes>WEB-INF/web.xml</includes>
                 </artifactItem>
               </artifactItems>
             </configuration>

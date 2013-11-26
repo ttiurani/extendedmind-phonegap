@@ -9,7 +9,7 @@
   <groupId>org.extendedmind</groupId>
   <artifactId>phonegap</artifactId>
   <version>0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+  <packaging>war</packaging>
   <name>Extended Mind</name>
   <description>Extended Mind Phonegap</description>
   <inceptionYear>2013</inceptionYear>
@@ -70,7 +70,7 @@
   </dependencyManagement>
 
   <build>
-    <sourceDirectory>${basedir}</sourceDirectory>
+    <sourceDirectory>${basedir}/src</sourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -78,7 +78,27 @@
         <version>2.8</version>
         <executions>
           <execution>
-            <id>unpack</id>
+            <id>unpack-to-src</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.extendedmind.frontend</groupId>
+                  <artifactId>frontend-core</artifactId>
+                  <type>war</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${basedir}/src/main/webapp</outputDirectory>
+                  <includes>static/**</includes>
+                  <includes>WEB-INF/**</includes>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+          <execution>
+            <id>unpack-to-target</id>
             <phase>generate-resources</phase>
             <goals>
               <goal>unpack</goal>
@@ -99,6 +119,24 @@
         </executions>
       </plugin>
       <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.7</version>
+        <executions>
+          <execution>
+            <id>copy-index-to-src</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target name="copy-index">
+                <copy file="${project.basedir}/www/index.html" tofile="${project.basedir}/src/main/webapp/index.html"/>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-clean-plugin</artifactId>
         <version>2.5</version>
@@ -107,8 +145,19 @@
             <fileset>
               <directory>${basedir}/www/static</directory>
             </fileset>
+            <fileset>
+              <directory>${project.basedir}/src</directory>
+            </fileset>
           </filesets>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+           <skip>true</skip>
+       </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -134,8 +183,7 @@
         <version>0.0.4</version>
         <executions>
           <execution>
-            <id>start-phonegap-build</id>
-            <phase>package</phase>
+            <id>phonegap-build</id>
             <goals>
               <goal>clean</goal>
               <goal>build</goal>

@@ -91,14 +91,13 @@
                   <type>war</type>
                   <overWrite>true</overWrite>
                   <outputDirectory>${basedir}/src/main/webapp</outputDirectory>
-                  <includes>static/**</includes>
-                  <includes>WEB-INF/web.xml</includes>
+                  <includes>static/**,WEB-INF/web.xml</includes>
                 </artifactItem>
               </artifactItems>
             </configuration>
           </execution>
           <execution>
-            <id>unpack-to-target</id>
+            <id>unpack-to-www</id>
             <phase>generate-resources</phase>
             <goals>
               <goal>unpack</goal>
@@ -123,14 +122,17 @@
         <version>1.7</version>
         <executions>
           <execution>
-            <id>copy-index-to-src</id>
+            <id>copy-to-src</id>
             <phase>generate-resources</phase>
             <goals>
               <goal>run</goal>
             </goals>
             <configuration>
-              <target name="copy-index">
+              <target name="copy-to-src">
                 <copy file="${project.basedir}/www/index.html" tofile="${project.basedir}/src/main/webapp/index.html"/>
+                <copy todir="${project.basedir}/src/main/webapp/res" >  
+                  <fileset dir="${project.basedir}/www/res" includes="**"/>  
+                </copy>
               </target>
             </configuration>
           </execution>
@@ -158,24 +160,6 @@
         <configuration>
            <skip>true</skip>
        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-scm-plugin</artifactId>
-        <version>1.8.1</version>
-        <executions>
-          <execution>
-            <id>push-to-github</id>
-            <phase>package</phase>
-            <goals>
-              <goal>checkin</goal>
-            </goals>
-            <configuration>
-              <pushChanges>true</pushChanges>
-              <message>Automatic Maven commit</message>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>com.github.chrisprice</groupId>

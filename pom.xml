@@ -189,7 +189,7 @@
               <goal>build</goal>
             </goals>
             <configuration>
-              <configFile>${basedir}/config.xml</configFile>
+              <configFile>${basedir}/www/config.xml</configFile>
               <androidSign>true</androidSign>
               <iOsMobileProvision>${user.home}/.phonegap/ios/Testflight_Distribution_Profile.mobileprovision</iOsMobileProvision>
               <platforms>

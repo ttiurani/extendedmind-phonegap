@@ -3,6 +3,36 @@ Extended Mind - Phonegap
 
 Extended Mind - PhoneGap builds
 
+Setup PhoneGap build
+--------------------
+
+  Copy sample conf:
+    > cp /usr/share/maven/conf/settings.xml ~/.m2/
+
+  Open it and under <servers>, add the following:
+      <servers>
+          <server>
+        <id>phonegap-build</id>
+        <username>YOUR_ADOBE_EMAIL</username>
+        <password>YOUR_ADOBE_PWD</password>
+      </server>
+      <server>
+        <id>ios-developer-certificate</id>
+        <privateKey>${user.home}/.phonegap/ios/[YOUR P12 FILE]</privateKey>
+        <passphrase>[YOUR P12 PASSWORD]</passphrase>
+      </server>
+      <server>
+        <id>android-developer-certificate</id>
+        <privateKey>${user.home}/.phonegap/android/[YOUR ANDROID KEYSTORE]</privateKey>
+        <passphrase>[YOUR KEYSTORE PASSWORD]</passphrase>
+        <username>[YOUR KEYSTORE ALIAS]</username>
+        <password>[YOUR KEYSTORE PASSWORD]</password>
+      </server>
+
+   > cp [YOUR ANDROID KEYSTORE FILE] ~/.phonegap/android/
+   > cp [IOS DISTRIBUTION CERT] ~/.phonegap/ios/
+   > cp [IOS TESTFLIGHT DISTRIBUTION PROFILE] ~/.phonegap/ios/
+
 Android
 -------
 

@@ -1,6 +1,8 @@
 Extended Mind - Phonegap
 ========================
 
+Github destroys MD line wrapping - read this locally!
+
 Extended Mind - PhoneGap builds
 
 Setup PhoneGap build
